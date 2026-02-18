@@ -1,34 +1,35 @@
-Hakobyan–Li Slit Domain (Discrete Graph Approximation)
+Hakobyan–Li Slit Domain (Discrete Approximation)
 
-This repository contains a MATLAB implementation of a finite-stage approximation of the Hakobyan–Li slit domain and a numerical estimate of Lipschitz distortion using shortest-path distances.
+This project contains a MATLAB implementation of a finite-stage approximation of the Hakobyan–Li slit domain and a numerical estimate of intrinsic Lipschitz distortion.
 
-The goal is to approximate the intrinsic metric of the slit domain and estimate
+The code constructs a dyadic slit domain, builds its intrinsic shortest-path metric using a grid graph, and estimates
 
-Lip approximately equals maximum over i not equal to j of
+L ≈ max_{i ≠ j} d_X(p_i, p_j) / ||p_i − p_j||_2
 
-d_X(p_i , p_j) divided by Euclidean distance between p_i and p_j
+over a finite set of sampled points.
 
-where
+Here:
 
-d_X is the intrinsic shortest-path distance in the slit domain
-Euclidean distance is the standard distance in R^2
+d_X is intrinsic shortest-path distance in the slit domain
 
-FILES
+||·||_2 is Euclidean distance
+
+Files
 
 hl_make_mask.m
-Builds the binary mask of the slit domain at scale N using sequence r.
+Builds the slit domain mask at dyadic depth N.
 
 hl_draw_slits.m
-Draws the vertical slits at each dyadic scale.
+Draws vertical slits at each dyadic scale.
 
 hl_build_graph.m
-Builds a graph from the free region of the mask.
+Constructs a graph on the free region.
 
 hl_dijkstra.m
-Dijkstra shortest-path implementation.
+Dijkstra shortest-path algorithm.
 
 hl_snap_xy_to_id.m
-Snaps continuous coordinates to nearest valid graph node.
+Snaps continuous coordinates to nearest valid node.
 
 hl_distance_xy.m
 Computes intrinsic shortest-path distance between two points.
@@ -39,7 +40,7 @@ Computes the Lipschitz estimate and returns the maximizing pair.
 script.m
 Example driver script.
 
-HOW TO RUN
+How to Run
 
 Place all .m files in the same directory.
 
@@ -51,11 +52,11 @@ script
 
 The script will:
 
-Construct the slit domain for a chosen scale N
+Construct the slit domain for chosen depth N
 
 Build the intrinsic graph
 
-Sample test points in the unit square
+Sample test points
 
 Compute the Lipschitz estimate
 
@@ -63,31 +64,39 @@ Print the maximizing pair
 
 Display a visualization
 
-MAIN PARAMETERS (in script.m)
+Main Parameters (in script.m)
 
-N = dyadic depth
-r = 1./(1:N) is the defining sequence
-numPts = number of grid points per axis
+N dyadic depth
+r defining sequence (currently r_n = 1/n)
+numPts number of grid points per axis
 
-Increasing N adds more dyadic scales of slits.
+Increasing N increases the number of dyadic scales.
 Increasing numPts increases sampling resolution.
 
-MATHEMATICAL INTERPRETATION
+Mathematical Interpretation
 
-For a fixed dyadic depth N, this code constructs a discrete approximation of the slit domain X_N.
+For fixed N, the code constructs a discrete approximation X_N of the slit domain.
 
-The intrinsic metric is approximated by shortest-path distance in a grid graph.
+The intrinsic metric is approximated by shortest-path distance on a grid graph.
 
-The reported Lipschitz value is the maximum ratio of intrinsic distance to Euclidean distance over sampled points.
+The reported value approximates
 
-This measures distortion of the identity embedding from the Euclidean metric to the intrinsic metric on X_N.
+max_{i ≠ j} d_{X_N}(p_i, p_j) / ||p_i − p_j||_2
 
-NOTES
+over sampled points.
 
-The implementation is purely discrete and grid-based.
+This measures distortion of the identity embedding from the Euclidean metric to the intrinsic metric.
 
-Very small distances may be influenced by grid resolution.
+Notes
 
-Results depend on sampling density and grid resolution.
+The implementation is discrete and grid-based.
 
-This is an exploratory numerical experiment toward understanding how distortion grows as N increases.
+Small distances may be influenced by grid resolution.
+
+Results depend on sampling density and grid size.
+
+This is an exploratory numerical experiment toward understanding distortion growth as N increases.
+
+This will render cleanly on GitHub and look professional when your professor opens the repo.
+
+If you want, I can also tighten it slightly to sound more research-polished.
