@@ -1,18 +1,19 @@
 # Lipschitz Constant Estimation via Gradient Descent
-
 A MATLAB implementation that uses gradient descent to estimate the Lipschitz 
 constant of a function, with graph construction and geometric slit visualization.
 
 ## Files
 - `drivingScript.m` — Main script to run the project
-- `gd_dlookup.m` / `gd_get_row.m` — Gradient descent utilities
+- `gd_compute_lip.m` — Computes global Lipschitz constant of the filling map over all graph edges
+- `gd_local_lip.m` — Computes worst Lipschitz ratio over edges incident to a single node (used inside descent loop)
+- `gd_dlookup.m` / `gd_get_row.m` — Distance cache utilities
 - `hl_build_graph_from_points.m` — Constructs graph from point data
 - `hl_draw_slits_iter.m` — Iterative slit drawing
 - `hl_overlay_grid_with_slit_holes.m` — Grid and slit overlay visualization
 - `hl_plot_graph_edges.m` — Graph edge plotting
 
 ## Presentation
-*Slides and writeup coming soon.*
+Slides in progress — [view on Overleaf](https://www.overleaf.com/project/69a8ca85b325b8e19020d3e1)
 
 ## Requirements
 MATLAB (R2021a or later recommended)
