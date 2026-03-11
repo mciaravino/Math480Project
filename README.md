@@ -13,7 +13,7 @@ constant of a function, with graph construction and geometric slit visualization
 - `hl_plot_graph_edges.m` — Graph edge plotting
 
 ## Presentation
-Slides in progress — [view on Overleaf](https://www.overleaf.com/project/69a8ca85b325b8e19020d3e1)
+Slides in progress — [view on Overleaf](https://www.overleaf.com/read/zvsbtpbmxrsb#347a7d)
 
 ## Requirements
 MATLAB (R2021a or later recommended)
